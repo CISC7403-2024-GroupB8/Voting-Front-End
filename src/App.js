@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
 
 const ENV_PORT = process.env.REACT_APP_PORT;
-// console.log("The application is running on port:", ENV_PORT);
+console.log("The application is running on port:", ENV_PORT);
 
 function App() {
   const [catCount, setCatCount] = useState(0);
@@ -79,7 +79,7 @@ function App() {
         </>)}
 
         {voteOption && (<div className='mt-5'>
-          <h1 className="text-3xl font-bold text-white hover:scale-110 transition-all">You Choose {voteOption} !</h1>
+          <h1 className="text-3xl font-bold text-white hover:scale-110 transition-all">You Choose {voteOption} ! 🎉🎊</h1>
 
           {!isVoted && (<button
             onClick={() => vote()}
@@ -89,20 +89,18 @@ function App() {
           </button>)}
         </div>)}
 
-        {isVoted && (
-          <>
-            {showExplosion && <ConfettiExplosion />}
-            <button
-              onClick={() => {
-                // TODO: 查看投票結果，跳轉6111
-                window.location.href = 'http://localhost:6111';
-              }}
-              className="bg-white  text-black font-bold py-4 px-6 rounded m-2 transition-transform transform hover:scale-110 shadow-md"
-            >
-              Check Result 🎉🎊
-            </button>
-          </>
-        )}
+        {isVoted && (<>
+          {showExplosion && <ConfettiExplosion />}
+          <button
+            onClick={() => {
+              // TODO: 查看投票結果，跳轉6111
+              window.location.href = 'http://localhost:6111';
+            }}
+            className="bg-white  text-black font-bold py-4 px-6 rounded m-2 transition-transform transform hover:scale-110 shadow-md"
+          >
+            Check Result 🎉🎉🎉🎊🎊🎊
+          </button>
+        </>)}
       </div>
 
 
