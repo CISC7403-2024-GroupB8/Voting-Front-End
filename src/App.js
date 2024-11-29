@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
 
-const ENV_PORT = process.env.REACT_APP_PORT;
+// set PORT=5000 && npm start 修改端口，6110投票 6111結果 
+const ENV_PORT = window.location.port;
 console.log("The application is running on port:", ENV_PORT);
 
 function App() {
@@ -57,7 +58,8 @@ function App() {
               // setCatCount(catCount + 1)
               setVote('Cat')
             }}
-            className="bg-white  text-green-500 font-bold py-4 px-6 rounded m-2 transition-transform transform hover:scale-110 shadow-md"
+            className="bg-white  text-green-500 font-bold py-4 px-6 rounded m-2 transition-transform transform 
+            hover:scale-110 hover:text-lg shadow-md"
             onMouseEnter={() => setIsCatHovered(true)}
             onMouseLeave={() => setIsCatHovered(false)}
           >
@@ -69,7 +71,8 @@ function App() {
               // setDogCount(dogCount + 1)
               setVote('Dog')
             }}
-            className="bg-white  text-blue-500 font-bold py-4 px-6 rounded m-2 transition-transform transform hover:scale-110 shadow-md"
+            className="bg-white  text-blue-500 font-bold py-4 px-6 rounded m-2 transition-transform transform 
+            hover:scale-110 hover:text-lg shadow-md"
             onMouseEnter={() => setIsDogHovered(true)}
             onMouseLeave={() => setIsDogHovered(false)}
           >
