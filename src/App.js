@@ -19,7 +19,7 @@ function App() {
   let catPercentage = 50;
   let dogPercentage = 50;
 
-  if (ENV_PORT == '6111') {
+  if (ENV_PORT == '6110') {
     // TODO: Result 模式
     catPercentage = totalCount === 0 ? 50 : (catCount / totalCount) * 100;
     dogPercentage = totalCount === 0 ? 50 : (dogCount / totalCount) * 100;
