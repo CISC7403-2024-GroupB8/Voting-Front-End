@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+## 啟動docker log的服務器
+需要到 `./logServer` 目錄下，運行 `node docker-api.js` 啟動log專屬服務器。
+
 ## Available Scripts
 
 In the project directory, you can run:
