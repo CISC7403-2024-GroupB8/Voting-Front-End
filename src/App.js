@@ -14,6 +14,8 @@ function App() {
   const [isVoted, setIsVoted] = useState(false);
   const [showExplosion, setShowExplosion] = useState(false);
   const [lastVote, setLastVote] = useState(null);
+  const [catLastVote, setCatLastVote] = useState(null);
+  const [dogLastVote, setDogLastVote] = useState(null);
 
   // Vote 模式
   let totalCount = catCount + dogCount;
@@ -71,12 +73,8 @@ function App() {
     console.log('dogJSON:', dogJSON);
     setCatCount(catJSON.vote_number);
     setDogCount(dogJSON.vote_number);
-    // 比較catJSON和dogJSON中的last_vote，取最大值
-    if (catJSON.last_vote > dogJSON.last_vote) {
-      setLastVote(catJSON.last_vote);
-    } else {
-      setLastVote(dogJSON.last_vote);
-    }
+    setCatLastVote(catJSON.last_vote);
+    setDogLastVote(dogJSON.last_vote);
   }
 
   return (
@@ -99,7 +97,7 @@ function App() {
               onMouseEnter={() => setIsCatHovered(true)}
               onMouseLeave={() => setIsCatHovered(false)}
             >
-              Cats
+              Cats🐱
               {/* ({catPercentage.toFixed(2)}%) */}
             </button>
             <button
@@ -112,7 +110,7 @@ function App() {
               onMouseEnter={() => setIsDogHovered(true)}
               onMouseLeave={() => setIsDogHovered(false)}
             >
-              Dogs
+              Dogs🐶
               {/* ({dogPercentage.toFixed(2)}%) */}
             </button>
           </>)}
@@ -132,7 +130,7 @@ function App() {
             {showExplosion && <ConfettiExplosion />}
             <button
               onClick={() => {
-                // TODO: 查看投票結果，跳轉6111
+                // 查看投票結果，跳轉6111
                 window.location.href = 'http://localhost:6111';
               }}
               className="bg-white  text-black font-bold py-4 px-6 rounded m-2 transition-transform transform hover:scale-110 shadow-md"
@@ -143,9 +141,20 @@ function App() {
         </>) : (<>
           {/* 結果頁 */}
           <h1 className="text-3xl font-bold text-white hover:scale-110 transition-all">Voting Results</h1>
-          <h2 className="text-2xl font-bold text-white hover:scale-110 transition-all">Cats🐱: {catCount}</h2>
-          <h2 className="text-2xl font-bold text-white hover:scale-110 transition-all">Dogs🐶: {dogCount}</h2>
-          <h2 className="text-xl font-bold text-white hover:scale-110 transition-all">Last Vote: {lastVote}</h2>
+          <h2 className="text-2xl font-bold text-white hover:scale-110 transition-all">Cats🐱: {catCount} Votes  {catPercentage}%</h2>
+          <h1 className="text-l font-bold text-white hover:scale-110 transition-all">Last Vote: {new Date(catLastVote).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</h1>
+          <br />
+          <h2 className="text-2xl font-bold text-white hover:scale-110 transition-all">Dogs🐶: {dogCount} Votes  {dogPercentage}%</h2>
+          <h1 className="text-l font-bold text-white hover:scale-110 transition-all">Last Vote: {new Date(dogLastVote).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</h1>
+          <button
+            onClick={() => {
+              // 繼續投票，跳轉6110
+              window.location.href = 'http://localhost:6110';
+            }}
+            className="bg-white  text-black font-bold py-4 px-6 rounded m-2 transition-transform transform hover:scale-110 shadow-md"
+          >
+            Vote Again🐱🐶
+          </button>
         </>)}</div>
 
 
