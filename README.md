@@ -13,7 +13,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-特別的，Windows需要使用`set PORT=5000 && npm start`啟動，Linux使用`PORT=5000 && npm start`。
+特別的，Windows需要使用`set PORT=6110 && npm start`啟動，Linux使用`PORT=6110 && npm start`。
 修改上面的端口，6110 投票頁，6111 結果頁。
 代碼中已自動判斷目前端口，需正確設置。
 
