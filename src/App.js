@@ -5,6 +5,10 @@ import ConfettiExplosion from 'react-confetti-explosion';
 const ENV_PORT = window.location.port;
 console.log("The application is running on port:", ENV_PORT);
 
+// localhost本地開發，backend_app容器開發，似乎不需要，只要空出localhost的8000端口即可
+// const HOST = 'backend_app';
+const HOST = 'localhost';
+
 function App() {
   const [catCount, setCatCount] = useState(0);
   const [dogCount, setDogCount] = useState(0);
@@ -46,7 +50,7 @@ function App() {
     setIsVoted(true);
     setShowExplosion(true);
 
-    const res = await fetch('http://localhost:8000/vote', {
+    const res = await fetch(`http://${HOST}:8000/vote`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -65,7 +69,7 @@ function App() {
 
   // 獲取投票結果
   const get_result = async () => {
-    const res = await fetch('http://localhost:8000/results');
+    const res = await fetch(`http://${HOST}:8000/results`);
     const data = await res.json();
     let catJSON = data.find((item) => item.option === 'Cats');
     let dogJSON = data.find((item) => item.option === 'Dogs');
@@ -131,7 +135,7 @@ function App() {
             <button
               onClick={() => {
                 // 查看投票結果，跳轉6111
-                window.location.href = 'http://localhost:6111';
+                window.location.href = `http://localhost:6111`;
               }}
               className="bg-white  text-black font-bold py-4 px-6 rounded m-2 transition-transform transform hover:scale-110 shadow-md"
             >
@@ -149,7 +153,7 @@ function App() {
           <button
             onClick={() => {
               // 繼續投票，跳轉6110
-              window.location.href = 'http://localhost:6110';
+              window.location.href = `http://localhost:6110`;
             }}
             className="bg-white  text-black font-bold py-4 px-6 rounded m-2 transition-transform transform hover:scale-110 shadow-md"
           >
