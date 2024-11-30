@@ -141,10 +141,10 @@ function App() {
         </>) : (<>
           {/* 結果頁 */}
           <h1 className="text-3xl font-bold text-white hover:scale-110 transition-all">Voting Results</h1>
-          <h2 className="text-2xl font-bold text-white hover:scale-110 transition-all">Cats🐱: {catCount} Votes  {catPercentage}%</h2>
+          <h2 className="text-2xl font-bold text-white hover:scale-110 transition-all">Cats🐱: {catCount} Votes  {catPercentage.toFixed(2)}%</h2>
           <h1 className="text-l font-bold text-white hover:scale-110 transition-all">Last Vote: {new Date(catLastVote).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</h1>
           <br />
-          <h2 className="text-2xl font-bold text-white hover:scale-110 transition-all">Dogs🐶: {dogCount} Votes  {dogPercentage}%</h2>
+          <h2 className="text-2xl font-bold text-white hover:scale-110 transition-all">Dogs🐶: {dogCount} Votes  {dogPercentage.toFixed(2)}%</h2>
           <h1 className="text-l font-bold text-white hover:scale-110 transition-all">Last Vote: {new Date(dogLastVote).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</h1>
           <button
             onClick={() => {
